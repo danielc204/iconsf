@@ -1,0 +1,136 @@
+
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>בחירת אייקון</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      direction: rtl;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .icon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .icon-option {
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      background-color: white;
+      width: 80px;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .icon-option:hover {
+      border-color: #666;
+    }
+
+    .icon-option.selected {
+      border-color: #007bff;
+      background-color: #e8f0ff;
+    }
+
+    .icon-label {
+      font-size: 12px;
+      margin-top: 6px;
+      color: #333;
+    }
+
+    #other-icons-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #search-input {
+      padding: 10px;
+      width: 60%;
+      margin-bottom: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>בחירת אייקון</h2>
+
+  <div class="icon-grid" id="iconGrid">
+    <div class="icon-option" data-value="home"><i class="fas fa-home"></i><div class="icon-label">בית</div></div>
+    <div class="icon-option" data-value="briefcase"><i class="fas fa-briefcase"></i><div class="icon-label">עבודה</div></div>
+    <div class="icon-option" data-value="users"><i class="fas fa-users"></i><div class="icon-label">חברים</div></div>
+    <div class="icon-option" data-value="money-bill"><i class="fas fa-money-bill"></i><div class="icon-label">כסף</div></div>
+    <div class="icon-option" data-value="heartbeat"><i class="fas fa-heartbeat"></i><div class="icon-label">בריאות</div></div>
+    <div class="icon-option" data-value="car"><i class="fas fa-car"></i><div class="icon-label">רכב</div></div>
+    <div class="icon-option" data-value="book"><i class="fas fa-book"></i><div class="icon-label">לימודים</div></div>
+    <div class="icon-option" data-value="utensils"><i class="fas fa-utensils"></i><div class="icon-label">אוכל</div></div>
+    <div class="icon-option" data-value="dumbbell"><i class="fas fa-dumbbell"></i><div class="icon-label">ספורט</div></div>
+    <div class="icon-option" data-value="other" id="otherBtn"><i class="fas fa-ellipsis-h"></i><div class="icon-label">עוד</div></div>
+  </div>
+
+  <div id="other-icons-container">
+    <input type="text" id="search-input" placeholder="חפש אייקון...">
+    <div class="icon-grid" id="otherIcons">
+      <div class="icon-option" data-value="paw"><i class="fas fa-paw"></i><div class="icon-label">חיות</div></div>
+      <div class="icon-option" data-value="leaf"><i class="fas fa-leaf"></i><div class="icon-label">טבע</div></div>
+      <div class="icon-option" data-value="plane"><i class="fas fa-plane"></i><div class="icon-label">טיולים</div></div>
+      <div class="icon-option" data-value="paint-brush"><i class="fas fa-paint-brush"></i><div class="icon-label">אמנות</div></div>
+      <div class="icon-option" data-value="camera"><i class="fas fa-camera"></i><div class="icon-label">צילום</div></div>
+      <div class="icon-option" data-value="gamepad"><i class="fas fa-gamepad"></i><div class="icon-label">משחקים</div></div>
+      <div class="icon-option" data-value="music"><i class="fas fa-music"></i><div class="icon-label">מוזיקה</div></div>
+      <div class="icon-option" data-value="tree"><i class="fas fa-tree"></i><div class="icon-label">טבע</div></div>
+      <div class="icon-option" data-value="laptop"><i class="fas fa-laptop"></i><div class="icon-label">מחשב</div></div>
+      <div class="icon-option" data-value="bug"><i class="fas fa-bug"></i><div class="icon-label">פיתוח</div></div>
+    </div>
+  </div>
+
+  <script>
+    const allIcons = document.querySelectorAll('.icon-option');
+    const otherBtn = document.getElementById('otherBtn');
+    const otherContainer = document.getElementById('other-icons-container');
+    const searchInput = document.getElementById('search-input');
+    const otherIcons = document.getElementById('otherIcons').children;
+
+    allIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        allIcons.forEach(i => i.classList.remove('selected'));
+        icon.classList.add('selected');
+        const selected = icon.getAttribute('data-value');
+        console.log("Selected icon:", selected);
+      });
+    });
+
+    otherBtn.addEventListener('click', () => {
+      otherContainer.style.display = "block";
+    });
+
+    searchInput.addEventListener('input', () => {
+      const val = searchInput.value.toLowerCase();
+      Array.from(otherIcons).forEach(icon => {
+        const type = icon.getAttribute('data-value');
+        icon.style.display = type.includes(val) ? "flex" : "none";
+      });
+    });
+  </script>
+
+</body>
+</html>
