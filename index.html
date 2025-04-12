@@ -10,6 +10,8 @@
       background-color: #f9f9f9;
       direction: rtl;
       text-align: center;
+      height: 100%;
+      margin: 0;
     }
 
     h2 {
@@ -21,6 +23,8 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
+      height: calc(100% - 60px); /* גובה מלא, פחות גובה הכותרת */
+      overflow-y: auto;
     }
 
     .icon-option {
@@ -58,6 +62,7 @@
       display: none;
       margin-top: 20px;
     }
+
   </style>
 </head>
 <body>
