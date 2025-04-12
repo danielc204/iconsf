@@ -1,4 +1,3 @@
-
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -59,9 +58,8 @@
       color: #333;
     }
 
-    #other-icons-container {
+    .hidden-icon {
       display: none;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -70,6 +68,7 @@
   <h2>בחירת אייקון</h2>
 
   <div class="icon-grid" id="iconGrid">
+    <!-- ראשיים -->
     <div class="icon-option" data-value="home"><i class="fas fa-home"></i><div class="icon-label">בית</div></div>
     <div class="icon-option" data-value="briefcase"><i class="fas fa-briefcase"></i><div class="icon-label">עבודה</div></div>
     <div class="icon-option" data-value="users"><i class="fas fa-users"></i><div class="icon-label">חברים</div></div>
@@ -80,38 +79,29 @@
     <div class="icon-option" data-value="utensils"><i class="fas fa-utensils"></i><div class="icon-label">אוכל</div></div>
     <div class="icon-option" data-value="dumbbell"><i class="fas fa-dumbbell"></i><div class="icon-label">ספורט</div></div>
     <div class="icon-option" data-value="other" id="otherBtn"><i class="fas fa-ellipsis-h"></i><div class="icon-label">עוד</div></div>
-  </div>
 
-  <div id="other-icons-container">
-    <div class="icon-grid" id="otherIcons">
-      <div class="icon-option" data-value="clipboard-list"><i class="fas fa-clipboard-list"></i><div class="icon-label">רשימת משימות</div></div>
-      <div class="icon-option" data-value="check-square"><i class="fas fa-check-square"></i><div class="icon-label">סימון משימה</div></div>
-      <div class="icon-option" data-value="calendar-check"><i class="fas fa-calendar-check"></i><div class="icon-label">לוח משימות</div></div>
-      <div class="icon-option" data-value="bell"><i class="fas fa-bell"></i><div class="icon-label">תזכורת</div></div>
-      <div class="icon-option" data-value="hourglass-half"><i class="fas fa-hourglass-half"></i><div class="icon-label">בהמתנה</div></div>
-      <div class="icon-option" data-value="flag-checkered"><i class="fas fa-flag-checkered"></i><div class="icon-label">הושלם</div></div>
-      <div class="icon-option" data-value="exclamation-circle"><i class="fas fa-exclamation-circle"></i><div class="icon-label">דחוף</div></div>
-      <div class="icon-option" data-value="thumbs-up"><i class="fas fa-thumbs-up"></i><div class="icon-label">בוצע</div></div>
-      <div class="icon-option" data-value="edit"><i class="fas fa-edit"></i><div class="icon-label">עריכה</div></div>
-      <div class="icon-option" data-value="tasks"><i class="fas fa-tasks"></i><div class="icon-label">משימות</div></div>
-      <div class="icon-option" data-value="clipboard-check"><i class="fas fa-clipboard-check"></i><div class="icon-label">בדיקה</div></div>
-      <div class="icon-option" data-value="project-diagram"><i class="fas fa-project-diagram"></i><div class="icon-label">פרויקט</div></div>
-      <div class="icon-option" data-value="bullseye"><i class="fas fa-bullseye"></i><div class="icon-label">יעד</div></div>
-      <div class="icon-option" data-value="rocket"><i class="fas fa-rocket"></i><div class="icon-label">התחלה</div></div>
-      <div class="icon-option" data-value="handshake"><i class="fas fa-handshake"></i><div class="icon-label">שיתוף פעולה</div></div>
-      <div class="icon-option" data-value="chart-line"><i class="fas fa-chart-line"></i><div class="icon-label">התקדמות</div></div>
-      <div class="icon-option" data-value="pause-circle"><i class="fas fa-pause-circle"></i><div class="icon-label">מושהה</div></div>
-      <div class="icon-option" data-value="bug"><i class="fas fa-bug"></i><div class="icon-label">תקלה</div></div>
-      <div class="icon-option" data-value="recycle"><i class="fas fa-recycle"></i><div class="icon-label">חוזר</div></div>
-      <div class="icon-option" data-value="lightbulb"><i class="fas fa-lightbulb"></i><div class="icon-label">רעיון</div></div>
-    </div>
+    <!-- מוסתרים בהתחלה -->
+    <div class="icon-option hidden-icon" data-value="user-check"><i class="fas fa-user-check"></i><div class="icon-label">משוב</div></div>
+    <div class="icon-option hidden-icon" data-value="file-alt"><i class="fas fa-file-alt"></i><div class="icon-label">דוח</div></div>
+    <div class="icon-option hidden-icon" data-value="hand-paper"><i class="fas fa-hand-paper"></i><div class="icon-label">הפסקה</div></div>
+    <div class="icon-option hidden-icon" data-value="paperclip"><i class="fas fa-paperclip"></i><div class="icon-label">קישור</div></div>
+    <div class="icon-option hidden-icon" data-value="calendar-alt"><i class="fas fa-calendar-alt"></i><div class="icon-label">תאריך יעד</div></div>
+    <div class="icon-option hidden-icon" data-value="tasks"><i class="fas fa-tasks"></i><div class="icon-label">משימות נוספות</div></div>
+    <div class="icon-option hidden-icon" data-value="clipboard-check"><i class="fas fa-clipboard-check"></i><div class="icon-label">בדיקה</div></div>
+    <div class="icon-option hidden-icon" data-value="bullhorn"><i class="fas fa-bullhorn"></i><div class="icon-label">הודעה</div></div>
+    <div class="icon-option hidden-icon" data-value="clock"><i class="fas fa-clock"></i><div class="icon-label">שעה</div></div>
+    <div class="icon-option hidden-icon" data-value="edit"><i class="fas fa-edit"></i><div class="icon-label">עריכה</div></div>
+    <div class="icon-option hidden-icon" data-value="check-circle"><i class="fas fa-check-circle"></i><div class="icon-label">סימון</div></div>
+    <div class="icon-option hidden-icon" data-value="project-diagram"><i class="fas fa-project-diagram"></i><div class="icon-label">פרויקט</div></div>
+    <div class="icon-option hidden-icon" data-value="clipboard"><i class="fas fa-clipboard"></i><div class="icon-label">לוח זמנים</div></div>
+    <div class="icon-option hidden-icon" data-value="sticky-note"><i class="fas fa-sticky-note"></i><div class="icon-label">פתקים</div></div>
+    <div class="icon-option hidden-icon" data-value="lightbulb"><i class="fas fa-lightbulb"></i><div class="icon-label">רעיון</div></div>
   </div>
 
   <script>
     const allIcons = document.querySelectorAll('.icon-option');
     const otherBtn = document.getElementById('otherBtn');
-    const otherContainer = document.getElementById('other-icons-container');
-    let otherOpen = false;
+    const hiddenIcons = document.querySelectorAll('.hidden-icon');
 
     allIcons.forEach(icon => {
       icon.addEventListener('click', () => {
@@ -122,10 +112,14 @@
       });
     });
 
-    otherBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      otherOpen = !otherOpen;
-      otherContainer.style.display = otherOpen ? "block" : "none";
+    otherBtn.addEventListener('click', () => {
+      hiddenIcons.forEach(icon => {
+        if (icon.style.display === "flex") {
+          icon.style.display = "none";
+        } else {
+          icon.style.display = "flex";
+        }
+      });
     });
   </script>
 
