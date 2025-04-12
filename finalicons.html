@@ -1,31 +1,31 @@
+
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <title>בחירת אייקון</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
+    body {
       font-family: Arial, sans-serif;
+      padding: 20px;
       background-color: #f9f9f9;
-      overflow: hidden; /* ביטול סקרול */
-      touch-action: manipulation; /* ביטול זום בנייד */
+      direction: rtl;
+      text-align: center;
+      height: 100%;
+      margin: 0;
     }
 
     h2 {
-      margin: 20px;
-      font-size: 20px;
-      text-align: center;
+      margin-bottom: 20px;
     }
 
     .icon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      gap: 12px;
-      padding: 10px 20px 30px;
-      max-width: 600px;
-      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      height: calc(100% - 60px);
+      overflow-y: auto;
     }
 
     .icon-option {
@@ -33,16 +33,19 @@
       border-radius: 12px;
       padding: 10px;
       cursor: pointer;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.3s ease;
       background-color: white;
+      width: 80px;
       height: 90px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      user-select: none;
-      -webkit-user-drag: none;
+      font-size: 26px;
+    }
+
+    .icon-option:hover {
+      border-color: #666;
     }
 
     .icon-option.selected {
@@ -51,21 +54,20 @@
     }
 
     .icon-label {
-      font-size: 13px;
+      font-size: 12px;
       margin-top: 6px;
       color: #333;
     }
 
-    @media (hover: hover) {
-      .icon-option:hover {
-        border-color: #666;
-      }
+    #other-icons-container {
+      display: none;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h2>בחר אייקון לקטגוריה</h2>
+  <h2>בחירת אייקון</h2>
 
   <div class="icon-grid" id="iconGrid">
     <div class="icon-option" data-value="home"><i class="fas fa-home"></i><div class="icon-label">בית</div></div>
@@ -77,34 +79,53 @@
     <div class="icon-option" data-value="book"><i class="fas fa-book"></i><div class="icon-label">לימודים</div></div>
     <div class="icon-option" data-value="utensils"><i class="fas fa-utensils"></i><div class="icon-label">אוכל</div></div>
     <div class="icon-option" data-value="dumbbell"><i class="fas fa-dumbbell"></i><div class="icon-label">ספורט</div></div>
-    <div class="icon-option" data-value="user-check"><i class="fas fa-user-check"></i><div class="icon-label">משוב</div></div>
-    <div class="icon-option" data-value="file-alt"><i class="fas fa-file-alt"></i><div class="icon-label">דוח</div></div>
-    <div class="icon-option" data-value="hand-paper"><i class="fas fa-hand-paper"></i><div class="icon-label">הפסקה</div></div>
-    <div class="icon-option" data-value="paperclip"><i class="fas fa-paperclip"></i><div class="icon-label">קישור</div></div>
-    <div class="icon-option" data-value="calendar-alt"><i class="fas fa-calendar-alt"></i><div class="icon-label">תאריך יעד</div></div>
-    <div class="icon-option" data-value="tasks"><i class="fas fa-tasks"></i><div class="icon-label">משימות</div></div>
-    <div class="icon-option" data-value="clipboard-check"><i class="fas fa-clipboard-check"></i><div class="icon-label">בדיקה</div></div>
-    <div class="icon-option" data-value="bullhorn"><i class="fas fa-bullhorn"></i><div class="icon-label">הודעה</div></div>
-    <div class="icon-option" data-value="clock"><i class="fas fa-clock"></i><div class="icon-label">שעה</div></div>
-    <div class="icon-option" data-value="edit"><i class="fas fa-edit"></i><div class="icon-label">עריכה</div></div>
-    <div class="icon-option" data-value="check-circle"><i class="fas fa-check-circle"></i><div class="icon-label">סימון</div></div>
-    <div class="icon-option" data-value="project-diagram"><i class="fas fa-project-diagram"></i><div class="icon-label">פרויקט</div></div>
-    <div class="icon-option" data-value="clipboard"><i class="fas fa-clipboard"></i><div class="icon-label">לוח זמנים</div></div>
-    <div class="icon-option" data-value="sticky-note"><i class="fas fa-sticky-note"></i><div class="icon-label">פתקים</div></div>
-    <div class="icon-option" data-value="lightbulb"><i class="fas fa-lightbulb"></i><div class="icon-label">רעיון</div></div>
+    <div class="icon-option" data-value="other" id="otherBtn"><i class="fas fa-ellipsis-h"></i><div class="icon-label">עוד</div></div>
+  </div>
+
+  <div id="other-icons-container">
+    <div class="icon-grid" id="otherIcons">
+      <div class="icon-option" data-value="clipboard-list"><i class="fas fa-clipboard-list"></i><div class="icon-label">רשימת משימות</div></div>
+      <div class="icon-option" data-value="check-square"><i class="fas fa-check-square"></i><div class="icon-label">סימון משימה</div></div>
+      <div class="icon-option" data-value="calendar-check"><i class="fas fa-calendar-check"></i><div class="icon-label">לוח משימות</div></div>
+      <div class="icon-option" data-value="bell"><i class="fas fa-bell"></i><div class="icon-label">תזכורת</div></div>
+      <div class="icon-option" data-value="hourglass-half"><i class="fas fa-hourglass-half"></i><div class="icon-label">בהמתנה</div></div>
+      <div class="icon-option" data-value="flag-checkered"><i class="fas fa-flag-checkered"></i><div class="icon-label">הושלם</div></div>
+      <div class="icon-option" data-value="exclamation-circle"><i class="fas fa-exclamation-circle"></i><div class="icon-label">דחוף</div></div>
+      <div class="icon-option" data-value="thumbs-up"><i class="fas fa-thumbs-up"></i><div class="icon-label">בוצע</div></div>
+      <div class="icon-option" data-value="edit"><i class="fas fa-edit"></i><div class="icon-label">עריכה</div></div>
+      <div class="icon-option" data-value="tasks"><i class="fas fa-tasks"></i><div class="icon-label">משימות</div></div>
+      <div class="icon-option" data-value="clipboard-check"><i class="fas fa-clipboard-check"></i><div class="icon-label">בדיקה</div></div>
+      <div class="icon-option" data-value="project-diagram"><i class="fas fa-project-diagram"></i><div class="icon-label">פרויקט</div></div>
+      <div class="icon-option" data-value="bullseye"><i class="fas fa-bullseye"></i><div class="icon-label">יעד</div></div>
+      <div class="icon-option" data-value="rocket"><i class="fas fa-rocket"></i><div class="icon-label">התחלה</div></div>
+      <div class="icon-option" data-value="handshake"><i class="fas fa-handshake"></i><div class="icon-label">שיתוף פעולה</div></div>
+      <div class="icon-option" data-value="chart-line"><i class="fas fa-chart-line"></i><div class="icon-label">התקדמות</div></div>
+      <div class="icon-option" data-value="pause-circle"><i class="fas fa-pause-circle"></i><div class="icon-label">מושהה</div></div>
+      <div class="icon-option" data-value="bug"><i class="fas fa-bug"></i><div class="icon-label">תקלה</div></div>
+      <div class="icon-option" data-value="recycle"><i class="fas fa-recycle"></i><div class="icon-label">חוזר</div></div>
+      <div class="icon-option" data-value="lightbulb"><i class="fas fa-lightbulb"></i><div class="icon-label">רעיון</div></div>
+    </div>
   </div>
 
   <script>
-    const iconOptions = document.querySelectorAll('.icon-option');
+    const allIcons = document.querySelectorAll('.icon-option');
+    const otherBtn = document.getElementById('otherBtn');
+    const otherContainer = document.getElementById('other-icons-container');
+    let otherOpen = false;
 
-    iconOptions.forEach(icon => {
+    allIcons.forEach(icon => {
       icon.addEventListener('click', () => {
-        iconOptions.forEach(i => i.classList.remove('selected'));
+        allIcons.forEach(i => i.classList.remove('selected'));
         icon.classList.add('selected');
-        const selectedIconCode = icon.getAttribute('data-value');
-        console.log("Selected icon code:", selectedIconCode);
-        // כאן אפשר לשלוח לשרת או לשמור למשתמש
+        const selected = icon.getAttribute('data-value');
+        console.log("Selected icon:", selected);
       });
+    });
+
+    otherBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      otherOpen = !otherOpen;
+      otherContainer.style.display = otherOpen ? "block" : "none";
     });
   </script>
 
