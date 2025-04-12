@@ -1,4 +1,3 @@
-
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -59,15 +58,6 @@
       display: none;
       margin-top: 20px;
     }
-
-    #search-input {
-      padding: 10px;
-      width: 60%;
-      margin-bottom: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
   </style>
 </head>
 <body>
@@ -88,18 +78,25 @@
   </div>
 
   <div id="other-icons-container">
-    <input type="text" id="search-input" placeholder="חפש אייקון...">
     <div class="icon-grid" id="otherIcons">
-      <div class="icon-option" data-value="paw"><i class="fas fa-paw"></i><div class="icon-label">חיות</div></div>
-      <div class="icon-option" data-value="leaf"><i class="fas fa-leaf"></i><div class="icon-label">טבע</div></div>
-      <div class="icon-option" data-value="plane"><i class="fas fa-plane"></i><div class="icon-label">טיולים</div></div>
-      <div class="icon-option" data-value="paint-brush"><i class="fas fa-paint-brush"></i><div class="icon-label">אמנות</div></div>
-      <div class="icon-option" data-value="camera"><i class="fas fa-camera"></i><div class="icon-label">צילום</div></div>
-      <div class="icon-option" data-value="gamepad"><i class="fas fa-gamepad"></i><div class="icon-label">משחקים</div></div>
-      <div class="icon-option" data-value="music"><i class="fas fa-music"></i><div class="icon-label">מוזיקה</div></div>
-      <div class="icon-option" data-value="tree"><i class="fas fa-tree"></i><div class="icon-label">טבע</div></div>
-      <div class="icon-option" data-value="laptop"><i class="fas fa-laptop"></i><div class="icon-label">מחשב</div></div>
-      <div class="icon-option" data-value="bug"><i class="fas fa-bug"></i><div class="icon-label">פיתוח</div></div>
+      <div class="icon-option" data-value="user-check"><i class="fas fa-user-check"></i><div class="icon-label">משוב</div></div>
+      <div class="icon-option" data-value="file-alt"><i class="fas fa-file-alt"></i><div class="icon-label">דוח</div></div>
+      <div class="icon-option" data-value="hand-paper"><i class="fas fa-hand-paper"></i><div class="icon-label">הפסקה</div></div>
+      <div class="icon-option" data-value="paperclip"><i class="fas fa-paperclip"></i><div class="icon-label">קישור</div></div>
+      <div class="icon-option" data-value="calendar-alt"><i class="fas fa-calendar-alt"></i><div class="icon-label">תאריך יעד</div></div>
+      <div class="icon-option" data-value="tasks"><i class="fas fa-tasks"></i><div class="icon-label">משימות נוספות</div></div>
+
+      <!-- אייקונים חדשים -->
+      <div class="icon-option" data-value="clipboard-check"><i class="fas fa-clipboard-check"></i><div class="icon-label">בדיקה</div></div>
+      <div class="icon-option" data-value="bullhorn"><i class="fas fa-bullhorn"></i><div class="icon-label">הודעה</div></div>
+      <div class="icon-option" data-value="clock"><i class="fas fa-clock"></i><div class="icon-label">שעה</div></div>
+      <div class="icon-option" data-value="edit"><i class="fas fa-edit"></i><div class="icon-label">עריכה</div></div>
+      <div class="icon-option" data-value="check-circle"><i class="fas fa-check-circle"></i><div class="icon-label">סימון</div></div>
+      <div class="icon-option" data-value="tasks"><i class="fas fa-tasks"></i><div class="icon-label">משימות</div></div>
+      <div class="icon-option" data-value="project-diagram"><i class="fas fa-project-diagram"></i><div class="icon-label">פרויקט</div></div>
+      <div class="icon-option" data-value="clipboard"><i class="fas fa-clipboard"></i><div class="icon-label">לוח זמנים</div></div>
+      <div class="icon-option" data-value="sticky-note"><i class="fas fa-sticky-note"></i><div class="icon-label">פתקים</div></div>
+      <div class="icon-option" data-value="lightbulb"><i class="fas fa-lightbulb"></i><div class="icon-label">רעיון</div></div>
     </div>
   </div>
 
@@ -107,8 +104,6 @@
     const allIcons = document.querySelectorAll('.icon-option');
     const otherBtn = document.getElementById('otherBtn');
     const otherContainer = document.getElementById('other-icons-container');
-    const searchInput = document.getElementById('search-input');
-    const otherIcons = document.getElementById('otherIcons').children;
 
     allIcons.forEach(icon => {
       icon.addEventListener('click', () => {
@@ -121,14 +116,6 @@
 
     otherBtn.addEventListener('click', () => {
       otherContainer.style.display = "block";
-    });
-
-    searchInput.addEventListener('input', () => {
-      const val = searchInput.value.toLowerCase();
-      Array.from(otherIcons).forEach(icon => {
-        const type = icon.getAttribute('data-value');
-        icon.style.display = type.includes(val) ? "flex" : "none";
-      });
     });
   </script>
 
