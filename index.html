@@ -27,22 +27,21 @@
       overflow-y: auto;
     }
 
-  .icon-option {
-  border: 2px solid transparent;
-  border-radius: 12px;
-  padding: 10px;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-  background-color: white;
-  width: 100px;
-  height: 110px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px; 
-}
-
+    .icon-option {
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 10px;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+      background-color: white;
+      width: 100px;
+      height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
 
     .icon-option:hover {
       border-color: #666;
@@ -110,7 +109,6 @@
         const selected = icon.getAttribute('data-value');
         console.log("Selected icon:", selected);
         window.parent.postMessage(selected, "*");
-
       });
     });
 
