@@ -94,8 +94,6 @@
     <div class="icon-option hidden-icon" data-value="heart"><img src="https://img.icons8.com/ios/452/like--v1.png" alt="זוגיות"><div class="icon-label">זוגיות</div></div>
     <div class="icon-option hidden-icon" data-value="tools"><img src="https://img.icons8.com/ios/452/maintenance.png" alt="תחזוקה"><div class="icon-label">תחזוקה</div></div>
     <div class="icon-option hidden-icon" data-value="shopping"><img src="https://img.icons8.com/ios/452/shopping-cart.png" alt="קניות"><div class="icon-label">קניות</div></div>
-    
-    <!-- סמלים נוספים חדשים -->
     <div class="icon-option hidden-icon" data-value="bed"><img src="https://img.icons8.com/ios/452/bed.png" alt="מנוחה"><div class="icon-label">מנוחה</div></div>
     <div class="icon-option hidden-icon" data-value="phone"><img src="https://img.icons8.com/ios/452/phone.png" alt="טלפון"><div class="icon-label">טלפון</div></div>
     <div class="icon-option hidden-icon" data-value="tv"><img src="https://img.icons8.com/ios/452/tv.png" alt="טלוויזיה"><div class="icon-label">טלוויזיה</div></div>
@@ -104,7 +102,6 @@
     <div class="icon-option hidden-icon" data-value="family"><img src="https://img.icons8.com/ios/452/family.png" alt="משפחה"><div class="icon-label">משפחה</div></div>
     <div class="icon-option hidden-icon" data-value="cloud"><img src="https://img.icons8.com/ios/452/cloud.png" alt="ענן"><div class="icon-label">ענן</div></div>
     <div class="icon-option hidden-icon" data-value="shopping-bag"><img src="https://img.icons8.com/ios/452/shopping-bag.png" alt="תיק קניות"><div class="icon-label">תיק קניות</div></div>
-    <div class="icon-option hidden-icon" data-value="palette"><img src="https://img.icons8.com/ios/452/paint-palette.png" alt="ציור"><div class="icon-label">ציור</div></div>
     <div class="icon-option hidden-icon" data-value="party"><img src="https://img.icons8.com/ios/100/confetti.png" alt="אירוע"><div class="icon-label">אירוע</div></div>
   </div>
 
@@ -140,35 +137,33 @@
       "party": "https://img.icons8.com/ios/100/confetti.png"
     };
 
-  <script>
-  const allIcons = document.querySelectorAll('.icon-option');
-  const otherBtn = document.getElementById('otherBtn');
-  const hiddenIcons = document.querySelectorAll('.hidden-icon');
+    const allIcons = document.querySelectorAll('.icon-option');
+    const otherBtn = document.getElementById('otherBtn');
+    const hiddenIcons = document.querySelectorAll('.hidden-icon');
 
-  allIcons.forEach(icon => {
-    icon.addEventListener('click', () => {
-      const selected = icon.getAttribute('data-value');
+    allIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        const selected = icon.getAttribute('data-value');
 
-      if (selected === 'other') {
-        hiddenIcons.forEach(icon => {
-          icon.style.display = (icon.style.display === "flex") ? "none" : "flex";
-        });
-        return;
-      }
+        if (selected === 'other') {
+          hiddenIcons.forEach(icon => {
+            icon.style.display = (icon.style.display === "flex") ? "none" : "flex";
+          });
+          return;
+        }
 
-      allIcons.forEach(i => i.classList.remove('selected'));
-      icon.classList.add('selected');
+        allIcons.forEach(i => i.classList.remove('selected'));
+        icon.classList.add('selected');
 
-      const iconURL = iconLinks[selected] || "";
-      console.log("Selected icon:", selected);
-      console.log("Icon URL:", iconURL);
+        const iconURL = iconLinks[selected] || "";
+        console.log("Selected icon:", selected);
+        console.log("Icon URL:", iconURL);
 
-      // שליחת האייקון ל־Thunkable
-      window.parent.postMessage({ type: "ICON_SELECTED", iconUrl: iconURL }, "*");
+        // שליחת כתובת URL בלבד ל־Thunkable
+        window.parent.postMessage(iconURL, "*");
+      });
     });
-  });
-</script>
-
+  </script>
 
 </body>
 </html>
