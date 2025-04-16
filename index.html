@@ -106,9 +106,16 @@
       icon.addEventListener('click', () => {
         allIcons.forEach(i => i.classList.remove('selected'));
         icon.classList.add('selected');
+        
         const selected = icon.getAttribute('data-value');
+        const iconURL = `https://fontawesome.com/icons/${selected}`;
+
         console.log("Selected icon:", selected);
-        window.parent.postMessage(selected, "*");
+        console.log("Icon URL:", iconURL);
+        
+        // שליחה להורה
+        window.parent.postMessage(iconURL, "*");
+
       });
     });
 
