@@ -109,6 +109,8 @@
         icon.classList.add('selected');
         const selected = icon.getAttribute('data-value');
         console.log("Selected icon:", selected);
+        window.parent.postMessage(selected, "*");
+
       });
     });
 
