@@ -140,24 +140,30 @@
       "party": "https://img.icons8.com/ios/100/confetti.png"
     };
 
-    const iconGrid = document.getElementById('iconGrid');
+     const allIcons = document.querySelectorAll('.icon-option');
     const otherBtn = document.getElementById('otherBtn');
-    let isOtherVisible = false;
+    const hiddenIcons = document.querySelectorAll('.hidden-icon');
 
-    otherBtn.addEventListener('click', () => {
-      isOtherVisible = !isOtherVisible;
-      const hiddenIcons = iconGrid.querySelectorAll('.hidden-icon');
-      hiddenIcons.forEach(icon => {
-        icon.style.display = isOtherVisible ? 'block' : 'none';
+    allIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        const selected = icon.getAttribute('data-value');
+
+        if (selected === 'other') {
+          hiddenIcons.forEach(icon => {
+            icon.style.display = (icon.style.display === "flex") ? "none" : "flex";
+          });
+          return;
+        }
+
+        allIcons.forEach(i => i.classList.remove('selected'));
+        icon.classList.add('selected');
+
+        const iconURL = iconLinks[selected] || "";
+        console.log("Selected icon:", selected);
+        console.log("Icon URL:", iconURL);
+        window.parent.postMessage(iconURL, "*");
+        alert("כתובת האייקון: " + iconURL);
       });
-    });
-
-    iconGrid.addEventListener('click', (event) => {
-      if (event.target.closest('.icon-option')) {
-        const selectedIcon = event.target.closest('.icon-option');
-        const iconValue = selectedIcon.getAttribute('data-value');
-        alert(`נבחר: ${iconValue}`);
-      }
     });
   </script>
 
