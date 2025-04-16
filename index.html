@@ -160,7 +160,8 @@
         console.log("Icon URL:", iconURL);
 
         // שליחת כתובת URL בלבד ל־Thunkable
-        window.parent.postMessage(iconURL, "*");
+      window.ReactNativeWebView.postMessage(iconURL);
+
       });
     });
   </script>
